@@ -9,6 +9,6 @@ public class MainApp {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         BookService bookService = (BookService) context.getBean("bookService");
-        bookService.addBook("Java Complete Reference");
+        bookService.addBook("Spring in Action");
     }
 }

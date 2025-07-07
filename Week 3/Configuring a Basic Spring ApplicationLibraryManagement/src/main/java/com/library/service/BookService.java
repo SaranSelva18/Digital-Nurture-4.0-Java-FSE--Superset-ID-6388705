@@ -5,7 +5,7 @@ import com.library.repository.BookRepository;
 public class BookService {
     private BookRepository bookRepository;
 
-    // Setter for DI
+    // Setter injection
     public void setBookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
@@ -15,4 +15,3 @@ public class BookService {
         bookRepository.saveBook(bookName);
     }
 }
-
