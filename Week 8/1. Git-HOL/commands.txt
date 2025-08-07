@@ -1,0 +1,100 @@
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ git --version
+git version 2.47.1.windows.2
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ git config --global user.name "Saran"
+git config --global user.email "sarankkv18@email.com"
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=Saran
+user.email=sarankkv18@email.com
+core.editor=notepad++.exe -multiInst -nosession
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ notepad++
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ git config --global core.editor "notepad++"
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ git config --global -e
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ mkdir GitDemo
+cd GitDemo
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo
+$ git init
+Initialized empty Git repository in C:/Users/saran/GitDemo/.git/
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ ls -a
+./  ../  .git/
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ echo "Welcome to the version control" > welcome.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ cat welcome.txt
+Welcome to the version control
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        welcome.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git add welcome.txt
+warning: in the working copy of 'welcome.txt', LF will be replaced by CRLF the next time Git touches it
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git commit -m "Initial commit - added welcome.txt"
+[master (root-commit) 9334396] Initial commit - added welcome.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git remote add origin https://github.com/SaranSelva18/GitDemo.git
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git remote -v
+origin  https://github.com/SaranSelva18/GitDemo.git (fetch)
+origin  https://github.com/SaranSelva18/GitDemo.git (push)
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git push -u origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 260 bytes | 260.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/SaranSelva18/GitDemo.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
