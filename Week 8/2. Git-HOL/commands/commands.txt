@@ -1,0 +1,42 @@
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ cd ~/GitDemo
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ echo "This is a log file" > debug.log
+mkdir log
+echo "Log folder test file" > log/output.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ touch .gitignore
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ notepad++ .gitignore
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git add .gitignore
+git commit -m "Added .gitignore to exclude .log files and log folder"
+[master 9b9db05] Added .gitignore to exclude .log files and log folder
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 315 bytes | 315.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/SaranSelva18/GitDemo.git
+   9334396..9b9db05  master -> master
