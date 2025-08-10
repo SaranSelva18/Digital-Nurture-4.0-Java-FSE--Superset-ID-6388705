@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<<<<<<< HEAD
+<!-- hello.xml from master -->
+<message>This is content from master branch</message>
+=======
+<!-- hello.xml from GitWork branch -->
+<message>This is content from GitWork branch</message>
+>>>>>>> GitWork
