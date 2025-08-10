@@ -1,0 +1,152 @@
+saran@LAPTOP-SMLPNVGL MINGW64 ~
+$ # go to your repo
+cd ~/GitDemo
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ # set the exact email that matches your GitHub account (include @domain)
+git config --global user.name "Saran"
+git config --global user.email "git.with.saran@gmail.com"
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git checkout master
+git pull origin master
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+From https://github.com/SaranSelva18/GitDemo
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git checkout -b GitNewBranch
+Switched to a new branch 'GitNewBranch'
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (GitNewBranch)
+$ git branch
+* GitNewBranch
+  master
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (GitNewBranch)
+$ git branch -a
+* GitNewBranch
+  master
+  remotes/origin/master
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (GitNewBranch)
+$ echo "This is a new feature" > feature.txt
+echo "Branch edit: added a line" >> welcome.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (GitNewBranch)
+$ git add feature.txt welcome.txt
+git commit -m "Add feature.txt and update welcome.txt (work on GitNewBranch)"
+warning: in the working copy of 'welcome.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'feature.txt', LF will be replaced by CRLF the next time Git touches it
+[GitNewBranch e843e99] Add feature.txt and update welcome.txt (work on GitNewBranch)
+ 2 files changed, 2 insertions(+)
+ create mode 100644 feature.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (GitNewBranch)
+$ git status
+On branch GitNewBranch
+nothing to commit, working tree clean
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (GitNewBranch)
+$ git push -u origin GitNewBranch
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 433 bytes | 433.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'GitNewBranch' on GitHub by visiting:
+remote:      https://github.com/SaranSelva18/GitDemo/pull/new/GitNewBranch
+remote:
+To https://github.com/SaranSelva18/GitDemo.git
+ * [new branch]      GitNewBranch -> GitNewBranch
+branch 'GitNewBranch' set up to track 'origin/GitNewBranch'.
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (GitNewBranch)
+$ git checkout master
+git pull origin master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+From https://github.com/SaranSelva18/GitDemo
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git diff --name-only master..GitNewBranch
+feature.txt
+welcome.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git diff master..GitNewBranch
+diff --git a/feature.txt b/feature.txt
+new file mode 100644
+index 0000000..48af23d
+--- /dev/null
++++ b/feature.txt
+@@ -0,0 +1 @@
++This is a new feature
+diff --git a/welcome.txt b/welcome.txt
+index a6144e0..f69f589 100644
+--- a/welcome.txt
++++ b/welcome.txt
+@@ -1 +1,2 @@
+ Welcome to the version control
++Branch edit: added a line
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git config --global diff.tool p4merge
+git config --global difftool.p4merge.cmd "\"C:/Program Files/Perforce/p4merge.exe\" \"$LOCAL\" \"$REMOTE\""
+
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.cmd "\"C:/Program Files/Perforce/p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+git config --global mergetool.p4merge.trustExitCode true
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git difftool -y master..GitNewBranch
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git difftool -y master..GitNewBranch -- feature.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ # Make sure on master
+git checkout master
+
+# normal merge (fast-forward if possible)
+git merge GitNewBranch
+
+# OR force a merge commit (no fast-forward)
+# git merge --no-ff GitNewBranch -m "Merge GitNewBranch into master"
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Updating 9b9db05..e843e99
+Fast-forward
+ feature.txt | 1 +
+ welcome.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 feature.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git log --oneline --graph --decorate --all
+* e843e99 (HEAD -> master, origin/GitNewBranch, GitNewBranch) Add feature.txt and update welcome.txt (work on GitNewBranch)
+* 9b9db05 (origin/master) Added .gitignore to exclude .log files and log folder
+* 9334396 Initial commit - added welcome.txt
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git push origin master
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/SaranSelva18/GitDemo.git
+   9b9db05..e843e99  master -> master
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git branch -d GitNewBranch
+Deleted branch GitNewBranch (was e843e99).
+
+saran@LAPTOP-SMLPNVGL MINGW64 ~/GitDemo (master)
+$ git push origin --delete GitNewBranch
+To https://github.com/SaranSelva18/GitDemo.git
+ - [deleted]         GitNewBranch
+
+
